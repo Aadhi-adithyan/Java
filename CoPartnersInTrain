@@ -1,0 +1,30 @@
+import java.util.Scanner;
+class CoPartnersInTrain {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int berthNumber = scanner.nextInt();
+
+        int blockNumber = (berthNumber - 1) / 8 + 1;
+        int berthInBlock = (berthNumber - 1) % 8 + 1;
+
+        String berthType;
+        int coPartnerBerthInBlock;
+
+        switch (berthInBlock) {
+            case 1: case 4: berthType = "LB"; coPartnerBerthInBlock = berthInBlock == 1? 4 : 1;
+            break;
+            case 2: case 5: berthType = "MB"; coPartnerBerthInBlock = berthInBlock == 2? 5 : 2;
+            break;
+            case 3: case 6: berthType = "UB"; coPartnerBerthInBlock = berthInBlock == 3? 6 : 3;
+            break;
+            case 7: berthType = "SL"; coPartnerBerthInBlock = 8;
+            break;
+            case 8: berthType = "SU"; coPartnerBerthInBlock = 7;
+            break;
+            default: berthType = ""; coPartnerBerthInBlock = 0;
+            break;
+        }
+        int coPartnerBerthNumber = (blockNumber - 1) * 8 + coPartnerBerthInBlock;
+        System.out.println(coPartnerBerthNumber + berthType);
+    }
+}
