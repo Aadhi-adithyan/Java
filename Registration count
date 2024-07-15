@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class RegistrationCount {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Input the value of n
+        int n = scanner.nextInt();
+        
+        // Create an array to store registration codes
+        int[] codes = new int[n];
+        
+        // Input the registration codes
+        for (int i = 0; i < n; i++) {
+            codes[i] = scanner.nextInt();
+        }
+        
+        // Initialize counters for even and odd codes
+        int evenCount = 0;
+        int oddCount = 0;
+        
+        // Count even and odd codes
+        for (int code : codes) {
+            if (code % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+        
+        // Output the counts of even and odd codes
+        System.out.println(evenCount + " " + oddCount);
+        
+        scanner.close();
+    }
+}
