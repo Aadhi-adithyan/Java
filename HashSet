@@ -1,0 +1,39 @@
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Arrays;
+
+public class LexicographicalSubstrings {
+
+    public static void main(String[] args) {
+        // Sample input
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        String s = scanner.nextLine().trim();
+        int k = scanner.nextInt();
+
+        // Finding the smallest and largest substrings
+        String[] result = findSmallestAndLargestSubstrings(s, k);
+        
+        // Output the results
+        System.out.println(result[0]);
+        System.out.println(result[1]);
+    }
+
+    public static String[] findSmallestAndLargestSubstrings(String s, int k) {
+        Set<String> substrings = new HashSet<>();
+        
+        // Generate all substrings of length k
+        for (int i = 0; i <= s.length() - k; i++) {
+            substrings.add(s.substring(i, i + k));
+        }
+
+        // Convert the set to an array and sort it
+        String[] sortedSubstrings = substrings.toArray(new String[0]);
+        Arrays.sort(sortedSubstrings);
+
+        // Get the smallest and largest
+        String smallest = sortedSubstrings[0];
+        String largest = sortedSubstrings[sortedSubstrings.length - 1];
+
+        return new String[]{smallest, largest};
+    }
+}
